@@ -10,8 +10,9 @@ class Bank
   def deposit(amount)
     @balance += amount
   end
-
+  
   def credit(amount)
+    @balance -= amount
   end
 
 

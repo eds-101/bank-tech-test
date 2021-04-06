@@ -1,7 +1,7 @@
 require 'bank'
 
 describe Bank do
-  describe '.balance' do
+  describe '#balance' do
     it 'should respond to a balance method' do
       expect(subject).to respond_to(:balance)
     end
@@ -11,7 +11,7 @@ describe Bank do
 
   end
 
-  describe '.deposit' do
+  describe '#deposit' do
     it 'should respond to a deposit method' do
       expect(subject).to respond_to(:deposit).with(1).argument
     end
@@ -21,9 +21,15 @@ describe Bank do
     end
   end
 
-  describe '.credit' do
+  describe '#credit' do
+    before { subject.instance_variable_set(:@balance, 10) }
+
     it 'should respond to a credit method' do
       expect(subject).to respond_to(:credit).with(1).argument
+    end
+    it 'should reduce the balance by chosen amount' do
+      subject.credit(6)
+      expect(subject.balance).to eq 4
     end
   end
 
