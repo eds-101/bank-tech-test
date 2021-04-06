@@ -8,7 +8,6 @@ describe Bank do
     it 'should have initial value of 0' do
       expect(subject.balance).to eq 0.00
     end
-
   end
 
   describe '#deposit' do
@@ -23,7 +22,6 @@ describe Bank do
 
   describe '#credit' do
     before { subject.instance_variable_set(:@balance, 10) }
-
     it 'should respond to a credit method' do
       expect(subject).to respond_to(:credit).with(1).argument
     end
@@ -31,6 +29,17 @@ describe Bank do
       subject.credit(6)
       expect(subject.balance).to eq 4
     end
+  end
+
+  describe '#history' do
+    # how to better mock transactions?
+    before do
+      5.times { subject.deposit(2) }
+    end
+    it 'should store records of transactions' do
+      expect(subject.history.length).to eq 5      
+    end
+  
   end
 
 end
