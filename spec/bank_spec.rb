@@ -39,7 +39,9 @@ describe Bank do
     it 'should store records of transactions' do
       expect(subject.history.length).to eq 5      
     end
-  
+    it 'should store records of transactions' do
+      expect(subject.history[0][:type]).to eq :deposit
+    end      
   end
 
 end
