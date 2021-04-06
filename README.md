@@ -4,7 +4,7 @@ Bank Tech Test
 ## Edeman George
 * Summary
 * Goes
-* Here
+* Here - tech stack, design decisions tbc
 
 * How to run the program:
 ```sh
