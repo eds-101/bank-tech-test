@@ -10,12 +10,18 @@ class Bank
 
   def deposit(amount)
     @balance += amount
-    @history << { date: Date.today, type: :deposit, amount: amount, balance: @balance  }
+    record_transaction(type: :deposit, amount: amount, balance: @balance)
+    @balance
   end
   
   def credit(amount)
     @balance -= amount
-    @history << { date: Date.today, type: :credit, amount: amount, balance: @balance  }
+    record_transaction(type: :credit, amount: amount, balance: @balance)
+    @balance
+  end
+
+  def record_transaction(type:, amount:, balance:)
+    @history << { date: Date.today, type: type, amount: amount, balance: balance  }
   end
 
 end
