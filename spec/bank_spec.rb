@@ -63,4 +63,14 @@ describe Bank do
     end
   end
 
+  describe '#print_statement' do
+    before do
+      3.times { subject.deposit(40) }
+      2.times { subject.credit(3) }
+    end
+    it 'should print out a set header column' do
+      expect(subject.print_statement).to start_with("date || credit || debit || balance")
+    end
+  end
+
 end

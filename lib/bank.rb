@@ -21,6 +21,10 @@ class Bank
     @balance
   end
 
+  def print_statement
+    "date || credit || debit || balance"
+  end
+
   def record_transaction(type:, amount:, balance:)
     @history << { date: Date.today, type: type, amount: amount, balance: balance  }
   end
