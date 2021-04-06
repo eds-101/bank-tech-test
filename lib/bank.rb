@@ -10,7 +10,7 @@ class Bank
 
   def deposit(amount)
     @balance += amount
-    @history << { type: :deposit  }
+    @history << { type: :deposit, amount: amount, balance: @balance  }
   end
   
   def credit(amount)
