@@ -21,8 +21,20 @@ class Bank
     @balance
   end
 
+  def print_statement_header
+    puts "date || credit || debit || balance"
+  end
+
   def print_statement
-    "date || credit || debit || balance"
+    print_statement_header
+    printer = ""
+    @history.each do |record|
+      date = record[:date].strftime("%d/%m/%Y")
+      amount = '%0.2f' % record[:amount]
+      balance = '%0.2f' % record[:balance]
+      printer << "#{date} #{amount} #{balance}" + "\n"
+    end
+    puts printer
   end
 
   def record_transaction(type:, amount:, balance:)

@@ -65,12 +65,22 @@ describe Bank do
 
   describe '#print_statement' do
     before do
-      3.times { subject.deposit(40) }
-      2.times { subject.credit(3) }
+      subject.deposit(40)
+      subject.credit(3)
     end
+    date = Date.today.strftime("%d/%m/%Y")
     it 'should print out a set header column' do
-      expect(subject.print_statement).to start_with("date || credit || debit || balance")
+      expect{ subject.print_statement }.to output(
+        a_string_starting_with("date || credit || debit || balance"))
+        .to_stdout
     end
+    it 'should print transactions details, one per line' do
+      value = date + " 40.00" + " 40.00"
+      expect{ subject.print_statement }.to output(
+        a_string_including(value))
+        .to_stdout
+    end
+
   end
 
 end
