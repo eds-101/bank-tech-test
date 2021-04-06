@@ -11,5 +11,8 @@ class Bank
     @balance += amount
   end
 
+  def credit(amount)
+  end
+
 
 end

@@ -21,4 +21,10 @@ describe Bank do
     end
   end
 
+  describe '.credit' do
+    it 'should respond to a credit method' do
+      expect(subject).to respond_to(:credit).with(1).argument
+    end
+  end
+
 end
