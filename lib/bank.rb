@@ -1,3 +1,4 @@
+require 'Date'
 class Bank
   attr_reader :balance, :history
   
