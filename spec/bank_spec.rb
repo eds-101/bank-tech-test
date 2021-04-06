@@ -35,14 +35,17 @@ describe Bank do
     # how to better mock transactions?
     before do
       5.times { subject.deposit(2) }
+      2.times { subject.credit(3) }
     end
     it 'should store records of transactions' do
-      expect(subject.history.length).to eq 5      
+      expect(subject.history.length).to eq 7      
     end
     it 'should store records of transactions' do
       expect(subject.history[0][:type]).to eq :deposit
       expect(subject.history[2][:amount]).to eq 2
       expect(subject.history[4][:balance]).to eq 10
+      expect(subject.history[6][:balance]).to eq 4
+      expect(subject.history[6][:type]).to eq :credit
     end      
   end
 
