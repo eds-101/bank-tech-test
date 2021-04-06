@@ -15,6 +15,10 @@ describe Bank do
     it 'should respond to a deposit method' do
       expect(subject).to respond_to(:deposit).with(1).argument
     end
+    it 'should increase a balance by chosen amount' do
+      subject.deposit(6)
+      expect(subject.balance).to eq 6
+    end
   end
 
 end
