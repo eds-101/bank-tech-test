@@ -11,7 +11,8 @@ Bank Tech Test
 
 # Design decisions
 * I used three classes to separate responsibilities, although this was a late decision.
-* It requires manual use of Processor to format the bank.history method, before it can be printed out.
+* I unintentionally do not have a bank.print_statement due to separating classes
+* It requires manual use of Processor to format the bank.history method, before it can be printed out. (see `How to run the program`)
 
 # Next steps
 * Complete testing for all classes
