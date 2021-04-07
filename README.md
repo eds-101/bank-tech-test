@@ -5,8 +5,7 @@ Bank Tech Test
 * My solution uses three classes Bank, Processor and Printer
 * Runs via IRB, with instructions below
 * It functions and can print output as per requirements.
-* It is not fully tested. The solution was initially using only one class.
-* After splitting the classes and functioning I didn't have time to iterate over all the tests again and fix them
+* It is largely tested - some work outstanding on the print I believe
 * I have left the unfunctioning tests for review
 
 # Design decisions
@@ -17,6 +16,7 @@ Bank Tech Test
 # Next steps
 * Complete testing for all classes
 * Work out how to automate processing of bank statement i.e. help classes speak to each other automatically
+* Testing - I'm not sure how I can test just one thing for many tests - tbc
 
 * How to run the program:
 ```sh
