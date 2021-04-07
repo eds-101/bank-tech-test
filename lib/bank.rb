@@ -15,9 +15,9 @@ class Bank
     @balance
   end
   
-  def credit(amount)
+  def withdrawal(amount)
     @balance -= amount
-    record_transaction(type: :credit, amount: amount, balance: @balance)
+    record_transaction(type: :withdrawal, amount: amount, balance: @balance)
     @balance
   end
 
