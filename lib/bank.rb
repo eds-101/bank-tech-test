@@ -2,8 +2,6 @@ require 'Date'
 class Bank
   attr_reader :balance, :history
   
-  INITIAL_BALANCE = 0.00
-
   def initialize
     @balance = INITIAL_BALANCE
     @history = []
@@ -61,5 +59,8 @@ class Bank
   def record_transaction(type:, amount:, balance:)
     @history << { date: Date.today, type: type, amount: amount, balance: balance  }
   end
+
+  private
+  INITIAL_BALANCE = 0.00
 
 end

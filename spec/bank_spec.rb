@@ -72,7 +72,7 @@ describe Bank do
       expect{ subject.print_statement }.to output(
         a_string_starting_with("date || credit || debit || balance"))
         .to_stdout
-      end
+    end
       # dont know how to test the order of the output or the 
       # number of entries
     it 'distinguishes between credit and debit' do
@@ -87,13 +87,22 @@ describe Bank do
     end
     it 'prints transactions separated by "||" ' do
       date = Date.today.strftime("%d/%m/%Y")
-      value = date + " || 40.00 ||" + " || 40.00"
+      deposit_value = date + " || 40.00 ||" + " || 40.00"
       expect{ subject.print_statement }.to output(
-        a_string_including(value))
+        a_string_including(deposit_value))
         .to_stdout
     end
 
     it 'orders transactions by date, descending' do
+      date = Date.today.strftime("%d/%m/%Y")
+      deposit_value = date + " ||" + " 40.00 ||" + " || 40.00"
+      withdrawal_value = date + " ||" + " || 3.00" + " || 37.00"
+      expect{ subject.print_statement }.to output(
+        a_string_ending_with(deposit_value))
+        .to_stdout
+      # expect{ subject.print_statement }.not_to output(
+      #   a_string_ending_with(withdrawal_value))
+      #   .to_stdout
     end
 
   end
