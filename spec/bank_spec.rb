@@ -76,12 +76,6 @@ describe Bank do
     end
     # dont know how to test the order of the output or the 
     # number of entries
-    it 'should print transactions details, one per line' do
-      value = date + " 40.00" + " 40.00"
-      expect{ subject.print_statement }.to output(
-        a_string_including(value))
-        .to_stdout
-    end
     it 'should distinguish between credit and debit' do
       deposit = "40.00 ||"
       withdrawal = "|| 3.00"
@@ -91,6 +85,12 @@ describe Bank do
         expect{ subject.print_statement }.to output(
           a_string_including(withdrawal))
           .to_stdout
+    end
+    it 'should print transactions details, one per line' do
+      value = date + " 40.00 ||" + " 40.00"
+      expect{ subject.print_statement }.to output(
+        a_string_including(value))
+        .to_stdout
     end
 
   end
