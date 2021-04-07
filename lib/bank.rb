@@ -8,15 +8,21 @@ class Bank
   end
 
   def deposit(amount)
+    raise "Only input numbers!" unless number?(amount)
     @balance += amount
     record_transaction(type: :deposit, amount: amount, balance: @balance)
     @balance
   end
   
   def withdrawal(amount)
+    raise "Only input numbers!" unless number?(amount)
     @balance -= amount
     record_transaction(type: :withdrawal, amount: amount, balance: @balance)
     @balance
+  end
+
+  def number?(input)
+    input.is_a? Numeric
   end
 
   def print_statement_header

@@ -19,6 +19,9 @@ describe Bank do
       subject.deposit(6)
       expect(subject.balance).to eq 6
     end
+    it 'only takes numbers to be entered for deposits' do
+      expect { subject.deposit('10k') }.to raise_error "Only input numbers!"
+    end
   end
 
   describe '#withdrawal' do
@@ -29,6 +32,9 @@ describe Bank do
     it 'reduces the balance by chosen amount' do
       subject.withdrawal(6)
       expect(subject.balance).to eq 4
+    end
+    it 'only takes numbers to be entered for withdrawals' do
+      expect { subject.withdrawal('$1m') }.to raise_error "Only input numbers!"
     end
   end
 
