@@ -1,4 +1,5 @@
 require 'Date'
+
 class Bank
   attr_reader :balance, :history
   
@@ -19,6 +20,10 @@ class Bank
     @balance -= amount
     record_transaction(type: :withdraw, amount: amount, balance: @balance)
     @balance
+  end
+
+  def print_statement
+
   end
 
   

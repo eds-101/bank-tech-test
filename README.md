@@ -2,22 +2,45 @@ Bank Tech Test
 =================
 
 ## Edeman George
-* Summary
-* Goes
-* Here - tech stack, design decisions tbc
+* My solution uses three classes Bank, Processor and Printer
+* Runs via IRB, with instructions below
+* It functions and can print output as per requirements.
+* It is not fully tested. The solution was initially using only one class.
+* After splitting the classes and functioning I didn't have time to iterate over all the tests again and fix them
+* I have left the unfunctioning tests for review
+
+# Design decisions
+* I used three classes to separate responsibilities, although this was a late decision.
+* It requires manual use of Processor to format the bank.history method, before it can be printed out.
+
+# Next steps
+* Complete testing for all classes
+* Work out how to automate processing of bank statement i.e. help classes speak to each other automatically
 
 * How to run the program:
 ```sh
 $ git clone git@github.com:makersacademy/bank-tech-test.git
-$ tbc
-$ tbc
+Use your terminal and navigate to root of this project root folder
+$ cd lib
+$ irb
+$ require "./bank.rb"
+$ require "./processor.rb"
+$ require "./printer.rb"
+Initialize class instances to use the program features
+```
+* How to pass the acceptance criteria:
+```sh
+Use the Bank class to make some deposits and withdrawals
+$ processor = Processor.new
+$ processed_history = processor.process(bank.history)
+$ printer = Print.new
+$ printer.print(processed_history)
 ```
 
 * How to run tests:
 ```sh
-$ git clone git@github.com:makersacademy/bank-tech-test.git
-$ tbc
-$ tbc
+Use your terminal and navigate to root of this project root folder
+$ rspec
 ```
 
 ## Specification
