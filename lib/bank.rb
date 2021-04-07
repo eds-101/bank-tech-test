@@ -28,18 +28,34 @@ class Bank
   def print_statement
     print_statement_header
     printer = ""
-    @history.each do |record|
-      date = record[:date].strftime("%d/%m/%Y")
-      if record[:type] == :deposit 
-        amount = '%0.2f ||' % record[:amount]
-      else
-        amount = '|| %0.2f' % record[:amount]
-      end
-      # amount = '%0.2f' % record[:amount]
-      balance = '%0.2f' % record[:balance]
-      printer << "#{date} #{amount} #{balance}" + "\n"
-    end
+    process_transactions(@history, printer)
     puts printer
+  end
+
+  def process_transactions(transactions, destination_str)
+    transactions.each do |record|
+      date = format_date(record[:date])
+      amount = format_amount(record[:type], record[:amount])
+      balance = format_balance(record[:balance])
+      destination_str << format_record(date, amount, balance)
+    end
+    destination_str
+  end
+
+  def format_date(date)
+    date.strftime("%d/%m/%Y")
+  end
+
+  def format_amount(type, amount)
+    type == :deposit ? '%0.2f ||' % amount : '|| %0.2f' % amount
+  end
+
+  def format_balance(balance)
+    '%0.2f' % balance
+  end
+
+  def format_record(date, amount, balance)
+    "#{date} || #{amount} || #{balance}" + "\n"
   end
 
   def record_transaction(type:, amount:, balance:)

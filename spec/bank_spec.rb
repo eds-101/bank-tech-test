@@ -3,19 +3,19 @@ require 'Date'
 
 describe Bank do
   describe '#balance' do
-    it 'should respond to a balance method' do
+    it 'responds to a balance method' do
       expect(subject).to respond_to(:balance)
     end
-    it 'should have initial value of 0' do
+    it 'has an initial value of 0' do
       expect(subject.balance).to eq 0.00
     end
   end
 
   describe '#deposit' do
-    it 'should respond to a deposit method' do
+    it 'responds to a deposit method' do
       expect(subject).to respond_to(:deposit).with(1).argument
     end
-    it 'should increase a balance by chosen amount' do
+    it 'increases a balance by chosen amount' do
       subject.deposit(6)
       expect(subject.balance).to eq 6
     end
@@ -23,10 +23,10 @@ describe Bank do
 
   describe '#withdrawal' do
     before { subject.instance_variable_set(:@balance, 10) }
-    it 'should respond to a withdrawal method' do
+    it 'responds to a withdrawal method' do
       expect(subject).to respond_to(:withdrawal).with(1).argument
     end
-    it 'should reduce the balance by chosen amount' do
+    it 'reduces the balance by chosen amount' do
       subject.withdrawal(6)
       expect(subject.balance).to eq 4
     end
@@ -34,7 +34,7 @@ describe Bank do
 
   describe '#history' do
     describe 'storing the transaction date' do
-      it 'should store the transaction date' do
+      it 'stores the transaction date' do
         allow(Date).to receive(:today).and_return Date.new(2012,1,14)
         subject.deposit(12)
         allow(Date).to receive(:today).and_return Date.today
@@ -50,7 +50,7 @@ describe Bank do
         5.times { subject.deposit(2) }
         2.times { subject.withdrawal(3) }
       end
-      it 'should store records of transactions' do
+      it 'stores records of transactions' do
         expect(subject.history.length).to eq 7      
       end
       it 'know what content is in the transactions' do
@@ -68,15 +68,14 @@ describe Bank do
       subject.deposit(40)
       subject.withdrawal(3)
     end
-    date = Date.today.strftime("%d/%m/%Y")
-    it 'should print out a set header column' do
+    it 'prints out a set header column' do
       expect{ subject.print_statement }.to output(
         a_string_starting_with("date || credit || debit || balance"))
         .to_stdout
-    end
-    # dont know how to test the order of the output or the 
-    # number of entries
-    it 'should distinguish between credit and debit' do
+      end
+      # dont know how to test the order of the output or the 
+      # number of entries
+    it 'distinguishes between credit and debit' do
       deposit = "40.00 ||"
       withdrawal = "|| 3.00"
       expect{ subject.print_statement }.to output(
@@ -86,11 +85,15 @@ describe Bank do
           a_string_including(withdrawal))
           .to_stdout
     end
-    it 'should print transactions details, one per line' do
-      value = date + " 40.00 ||" + " 40.00"
+    it 'prints transactions separated by "||" ' do
+      date = Date.today.strftime("%d/%m/%Y")
+      value = date + " || 40.00 ||" + " || 40.00"
       expect{ subject.print_statement }.to output(
         a_string_including(value))
         .to_stdout
+    end
+
+    it 'orders transactions by date, descending' do
     end
 
   end
