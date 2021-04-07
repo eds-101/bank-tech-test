@@ -95,14 +95,14 @@ describe Bank do
 
     it 'orders transactions by date, descending' do
       date = Date.today.strftime("%d/%m/%Y")
-      deposit_value = date + " ||" + " 40.00 ||" + " || 40.00"
-      withdrawal_value = date + " ||" + " || 3.00" + " || 37.00"
+      deposit_value = date + " ||" + " 40.00 ||" + " || 40.00\n"
+      withdrawal_value = date + " ||" + " || 3.00" + " || 37.00\n"
       expect{ subject.print_statement }.to output(
         a_string_ending_with(deposit_value))
         .to_stdout
-      # expect{ subject.print_statement }.not_to output(
-      #   a_string_ending_with(withdrawal_value))
-      #   .to_stdout
+      expect{ subject.print_statement }.not_to output(
+        a_string_ending_with(withdrawal_value))
+        .to_stdout
     end
 
   end

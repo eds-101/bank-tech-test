@@ -26,7 +26,7 @@ class Bank
   def print_statement
     print_statement_header
     printer = ""
-    process_transactions(@history, printer)
+    process_transactions(@history.reverse, printer)
     puts printer
   end
 
@@ -39,6 +39,10 @@ class Bank
     end
     destination_str
   end
+
+  # def order_transactions_by_desc(transactions)
+  #   transactions.reverse
+  # end
 
   def format_date(date)
     date.strftime("%d/%m/%Y")
