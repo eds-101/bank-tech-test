@@ -30,7 +30,12 @@ class Bank
     printer = ""
     @history.each do |record|
       date = record[:date].strftime("%d/%m/%Y")
-      amount = '%0.2f' % record[:amount]
+      if record[:type] == :deposit 
+        amount = '%0.2f ||' % record[:amount]
+      else
+        amount = '|| %0.2f' % record[:amount]
+      end
+      # amount = '%0.2f' % record[:amount]
       balance = '%0.2f' % record[:balance]
       printer << "#{date} #{amount} #{balance}" + "\n"
     end

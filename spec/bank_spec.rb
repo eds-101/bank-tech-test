@@ -82,15 +82,15 @@ describe Bank do
         a_string_including(value))
         .to_stdout
     end
-    it 'should distinguish between withdrawal and debit' do
+    it 'should distinguish between credit and debit' do
       deposit = "40.00 ||"
       withdrawal = "|| 3.00"
       expect{ subject.print_statement }.to output(
         a_string_including(deposit))
         .to_stdout
-        # expect{ subject.print_statement }.to output(
-        #   a_string_including(withdrawal))
-        #   .to_stdout
+        expect{ subject.print_statement }.to output(
+          a_string_including(withdrawal))
+          .to_stdout
     end
 
   end
