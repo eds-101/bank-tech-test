@@ -24,17 +24,17 @@ describe Bank do
     end
   end
 
-  describe '#withdrawal' do
+  describe '#withdraw' do
     before { subject.instance_variable_set(:@balance, 10) }
-    it 'responds to a withdrawal method' do
-      expect(subject).to respond_to(:withdrawal).with(1).argument
+    it 'responds to a withdraw method' do
+      expect(subject).to respond_to(:withdraw).with(1).argument
     end
     it 'reduces the balance by chosen amount' do
-      subject.withdrawal(6)
+      subject.withdraw(6)
       expect(subject.balance).to eq 4
     end
-    it 'only takes numbers to be entered for withdrawals' do
-      expect { subject.withdrawal('$1m') }.to raise_error "Only input numbers!"
+    it 'only takes numbers to be entered for withdraw' do
+      expect { subject.withdraw('$1m') }.to raise_error "Only input numbers!"
     end
   end
 
@@ -44,7 +44,7 @@ describe Bank do
         allow(Date).to receive(:today).and_return Date.new(2012,1,14)
         subject.deposit(12)
         allow(Date).to receive(:today).and_return Date.today
-        subject.withdrawal(4)
+        subject.withdraw(4)
         expect(subject.history[0][:date]).to eq Date.new(2012,1,14)    
         expect(subject.history[1][:date]).to eq Date.today    
       end
@@ -54,7 +54,7 @@ describe Bank do
       # how to better mock transactions?
       before do
         5.times { subject.deposit(2) }
-        2.times { subject.withdrawal(3) }
+        2.times { subject.withdraw(3) }
       end
       it 'stores records of transactions' do
         expect(subject.history.length).to eq 7      
@@ -64,53 +64,9 @@ describe Bank do
         expect(subject.history[2][:amount]).to eq 2
         expect(subject.history[4][:balance]).to eq 10
         expect(subject.history[6][:balance]).to eq 4
-        expect(subject.history[6][:type]).to eq :withdrawal
+        expect(subject.history[6][:type]).to eq :withdraw
       end      
     end
-  end
-
-  describe '#print_statement' do
-    before do
-      subject.deposit(40)
-      subject.withdrawal(3)
-    end
-    it 'prints out a set header column' do
-      expect{ subject.print_statement }.to output(
-        a_string_starting_with("date || credit || debit || balance"))
-        .to_stdout
-    end
-      # dont know how to test the order of the output or the 
-      # number of entries
-    it 'distinguishes between credit and debit' do
-      deposit = "40.00 ||"
-      withdrawal = "|| 3.00"
-      expect{ subject.print_statement }.to output(
-        a_string_including(deposit))
-        .to_stdout
-        expect{ subject.print_statement }.to output(
-          a_string_including(withdrawal))
-          .to_stdout
-    end
-    it 'prints transactions separated by "||" ' do
-      date = Date.today.strftime("%d/%m/%Y")
-      deposit_value = date + " || 40.00 ||" + " || 40.00"
-      expect{ subject.print_statement }.to output(
-        a_string_including(deposit_value))
-        .to_stdout
-    end
-
-    it 'orders transactions by date, descending' do
-      date = Date.today.strftime("%d/%m/%Y")
-      deposit_value = date + " ||" + " 40.00 ||" + " || 40.00\n"
-      withdrawal_value = date + " ||" + " || 3.00" + " || 37.00\n"
-      expect{ subject.print_statement }.to output(
-        a_string_ending_with(deposit_value))
-        .to_stdout
-      expect{ subject.print_statement }.not_to output(
-        a_string_ending_with(withdrawal_value))
-        .to_stdout
-    end
-
   end
 
 end
