@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'printer'
 require 'bank'
 require 'processor'
@@ -15,11 +17,10 @@ describe Printer do
 
   describe '#print' do
     it 'prints out a set header column' do
-      expect{ subject.print(@history) }.to output(
-        a_string_starting_with("date || credit || debit || balance"))
+      expect { subject.print(@history) }.to output(
+        a_string_starting_with('date || credit || debit || balance')
+      )
         .to_stdout
     end
   end
-
 end
-
