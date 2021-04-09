@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'bank'
+require 'statement_printer'
 require 'Date'
 
 describe Bank do

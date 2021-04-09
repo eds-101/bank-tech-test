@@ -1,8 +1,14 @@
 # Processor to prepare bank history for printing
-class Processor
+class StatementPrinter
   def process(transactions)
     ordered = order_transactions_by_desc(transactions)
     format_transactions(ordered, '')
+  end
+
+  def print(file)
+    process(file)
+    print_statement_header
+    puts file
   end
 
   private
@@ -15,6 +21,10 @@ class Processor
       destination_str << format_record(date, amount, balance)
     end
     destination_str
+  end
+
+  def print_statement_header
+    puts 'date || credit || debit || balance'
   end
 
   def format_date(date)
