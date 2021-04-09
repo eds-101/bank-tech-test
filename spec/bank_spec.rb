@@ -6,18 +6,12 @@ require 'Date'
 
 describe Bank do
   describe '#balance' do
-    it 'responds to a balance method' do
-      expect(subject).to respond_to(:balance)
-    end
     it 'has an initial value of 0' do
       expect(subject.balance).to eq 0.00
     end
   end
 
   describe '#deposit' do
-    it 'responds to a deposit method' do
-      expect(subject).to respond_to(:deposit).with(1).argument
-    end
     it 'increases a balance by chosen amount' do
       subject.deposit(6)
       expect(subject.balance).to eq 6
@@ -29,9 +23,6 @@ describe Bank do
 
   describe '#withdraw' do
     before { subject.instance_variable_set(:@balance, 10) }
-    it 'responds to a withdraw method' do
-      expect(subject).to respond_to(:withdraw).with(1).argument
-    end
     it 'reduces the balance by chosen amount' do
       subject.withdraw(6)
       expect(subject.balance).to eq 4
@@ -54,7 +45,6 @@ describe Bank do
     end
 
     describe 'storing transaction details' do
-      # how to better mock transactions?
       before do
         5.times { subject.deposit(2) }
         2.times { subject.withdraw(3) }
