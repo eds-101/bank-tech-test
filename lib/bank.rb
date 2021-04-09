@@ -1,14 +1,15 @@
 # frozen_string_literal: true
-
 require 'Date'
+require_relative './statement_printer'
 
 # Bank to process and store customer transactions
 class Bank
   attr_reader :balance, :history
 
-  def initialize
+  def initialize(printer = StatementPrinter.new)
     @balance = INITIAL_BALANCE
     @history = []
+    @printer = printer
   end
 
   def deposit(amount)
@@ -27,7 +28,9 @@ class Bank
     @balance
   end
 
-  def print_statement; end
+  def print_statement
+    @printer.print(@history)    
+  end
 
   private
 

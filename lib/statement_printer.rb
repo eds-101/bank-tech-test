@@ -6,9 +6,9 @@ class StatementPrinter
   end
 
   def print(file)
-    process(file)
+    statement = process(file)
     print_statement_header
-    puts file
+    puts statement
   end
 
   private
