@@ -39,5 +39,4 @@ describe StatementPrinter do
   #     expect(subject.history[6][:type]).to eq :withdraw
   #   end
   # end
-
 end

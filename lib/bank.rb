@@ -35,7 +35,7 @@ class Bank
   end
 
   def view_balance
-    return 0 unless @history.length > 0
+    return 0 unless @history.length.positive?
 
     @history.last[:balance]
   end
