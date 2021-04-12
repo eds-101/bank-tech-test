@@ -13,12 +13,6 @@ Bank Tech Test
 * I used a dependency injection for the Bank's print_statement method, in order to preserve flexibility in the code
 * I added guards for the Bank's deposit and withdraw methods in order to make sure input was a number, so the input could be controlled and avoid accidental bugs.
 
-
-# Next steps
-* Complete testing for all classes
-* Work out how to automate processing of bank statement i.e. help classes speak to each other automatically
-* Testing - I'm not sure how I can test just one thing for many tests - tbc
-
 * How to install and run the program:
 ```sh
 $ git clone git@github.com:makersacademy/bank-tech-test.git
@@ -32,19 +26,16 @@ $ bank.deposit(1000)
 $ bank.withdraw(50)
 $ bank.print_statement
 ```
-* How to pass the acceptance criteria:
-```sh
-Use the Bank class to make some deposits and withdrawals
-$ processor = Processor.new
-$ processed_history = processor.process(bank.history)
-$ printer = Print.new
-$ printer.print(processed_history)
-```
-
 * How to run tests:
 ```sh
 Use your terminal and navigate to root of this project root folder
 $ rspec
+```
+
+* How to pass the acceptance criteria:
+```sh
+Run `rspec` from the command line to see the passing feature test
+See spec/features/acceptance_spec.rb specifically for the acceptance test hardcoded
 ```
 
 ## Specification
