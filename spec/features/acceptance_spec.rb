@@ -1,9 +1,8 @@
 require 'bank'
 
-
 describe 'Acceptance test' do
 
-  it "allows a user to see a menu, order dishes and see their order total" do
+  it "allows a user to make bank transactions and print a statement" do
     bank = Bank.new
     allow(Date).to receive(:today).and_return Date.new(2012, 1, 10)
     bank.deposit(1000)
