@@ -45,6 +45,12 @@ class StatementPrinter
   end
 
   def order_transactions_by_desc(transactions)
+    transactions = transactions.sort_by! { |k| k[:date]}
     transactions.reverse
   end
 end
+
+# 12/04/2014 || || 20.00 || 5.00\n            12/04/2013 || 5.00 || || 25.00\n            12/04/2012 || 20.00 || || 20.00
+# 01/01/2014 || 10.00 || || 25.00\n
+# 01/01/2013 || || 5.00 || 15.00\n
+# 01/01/2012 || 20.00 || || 20.00\n"

@@ -40,7 +40,13 @@ describe Bank do
         { date: Date.new(2013, 1, 1), type: :withdraw, amount: 5, balance: 15 }      
       ]) }
       it 'prints transactions by descending order of date' do
-          # expect, string output?
+        expect { subject.print_statement }.to output(
+          a_string_including(
+            "01/01/2014 || 10.00 || || 25.00\n"\
+            "01/01/2013 || || 5.00 || 15.00\n"\
+            "01/01/2012 || 20.00 || || 20.00\n"
+        ))
+          .to_stdout
       end
       it 'firstly prints out a set header column' do
         expect { subject.print_statement }.to output(
@@ -49,6 +55,10 @@ describe Bank do
           .to_stdout
       end
     end
+
+    # 14 || || 20.00 || 5.00
+    # 01/01/2013 || 5.00 || || 25.00
+    # 01/01/2012 || 20.00 || || 20.00'
 
     # describe 'storing the transaction date' do
     #   it 'stores the transaction date' do
