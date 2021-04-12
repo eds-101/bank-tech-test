@@ -2,9 +2,11 @@
 
 require 'Date'
 
+require_relative './statement_printer'
+
 # Bank to process and store customer transactions
 class Bank
-  attr_reader :balance, :history
+  attr_reader :history
 
   def initialize
     @balance = INITIAL_BALANCE
@@ -27,7 +29,16 @@ class Bank
     @balance
   end
 
-  def print_statement; end
+  def print_statement(statement_printer = StatementPrinter.new)
+    processed_statement = statement_printer.process_statement(@history)
+    statement_printer.print(processed_statement)
+  end
+
+  def view_balance
+    return 0 unless @history.length.positive?
+
+    @history.last[:balance]
+  end
 
   private
 

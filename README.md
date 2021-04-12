@@ -2,46 +2,40 @@ Bank Tech Test
 =================
 
 ## Edeman George
-* My solution uses three classes Bank, Processor and Printer
-* Runs via IRB, with instructions below
-* It functions and can print output as per requirements.
-* It is largely tested - some work outstanding on the print I believe
-* I have left the unfunctioning tests for review
+* My solution uses two classes:
+* A Bank class for completing and storing transactions, and a StatementPrinter to process and print the bank account statements
+* It runs through IRB, with instructions below
+* Test coverage == 100%
+
 
 # Design decisions
-* I used three classes to separate responsibilities, although this was a late decision.
-* I unintentionally do not have a bank.print_statement due to separating classes
-* It requires manual use of Processor to format the bank.history method, before it can be printed out. (see `How to run the program`)
+* I used three classes to separate responsibilities, although I reverted to using two because the Statement and Printer classes were still tightly coupled
+* I used a dependency injection for the Bank's print_statement method, in order to preserve flexibility in the code
+* I added guards for the Bank's deposit and withdraw methods in order to make sure input was a number, so the input could be controlled and avoid accidental bugs.
 
-# Next steps
-* Complete testing for all classes
-* Work out how to automate processing of bank statement i.e. help classes speak to each other automatically
-* Testing - I'm not sure how I can test just one thing for many tests - tbc
-
-* How to run the program:
+* How to install and run the program:
 ```sh
 $ git clone git@github.com:makersacademy/bank-tech-test.git
-Use your terminal and navigate to root of this project root folder
+Use your terminal, navigate to root of this project root folder and run the following commands
 $ cd lib
+$ bundle
 $ irb
 $ require "./bank.rb"
-$ require "./processor.rb"
-$ require "./printer.rb"
-Initialize class instances to use the program features
+$ bank = Bank.new
+$ bank.deposit(1000)
+$ bank.withdraw(50)
+$ bank.print_statement
 ```
-* How to pass the acceptance criteria:
-```sh
-Use the Bank class to make some deposits and withdrawals
-$ processor = Processor.new
-$ processed_history = processor.process(bank.history)
-$ printer = Print.new
-$ printer.print(processed_history)
-```
-
 * How to run tests:
 ```sh
 Use your terminal and navigate to root of this project root folder
 $ rspec
+```
+
+* How to pass the acceptance criteria:
+```sh
+Run `rspec` from the command line to see the passing feature test
+See spec/features/acceptance_spec.rb specifically for the acceptance test hardcoded
 ```
 
 ## Specification
