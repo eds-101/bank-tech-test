@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'Date'
 
 require_relative './statement_printer'
@@ -34,6 +35,8 @@ class Bank
   end
 
   def view_balance
+    return 0 unless @history.length > 0
+
     @history.last[:balance]
   end
 
