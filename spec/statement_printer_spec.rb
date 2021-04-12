@@ -28,7 +28,6 @@ describe StatementPrinter do
     expect(subject.process(@bank.history)).to start_with(withdraw_value)
     expect(subject.process(@bank.history)).to end_with(deposit_value)
   end
-  
   it 'prints out a set header column' do
     expect { subject.print(@bank.history) }.to output(
       a_string_starting_with('date || credit || debit || balance')

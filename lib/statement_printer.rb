@@ -7,7 +7,6 @@ class StatementPrinter
   end
 
   def print(statement)
-    # processed_statement = process(statement)
     print_statement_header
     puts statement
   end
