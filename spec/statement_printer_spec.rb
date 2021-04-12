@@ -23,20 +23,4 @@ describe StatementPrinter do
     expect(subject.process_statement(@test_data)).to include(deposit_value)
   end
 
-  # describe 'storing transaction details' do
-  #   before do
-  #     5.times { subject.deposit(2) }
-  #     2.times { subject.withdraw(3) }
-  #   end
-  #   it 'stores records of transactions' do
-  #     expect(subject.history.length).to eq 7
-  #   end
-  #   it 'know what content is in the transactions' do
-  #     expect(subject.history[0][:type]).to eq :deposit
-  #     expect(subject.history[2][:amount]).to eq 2
-  #     expect(subject.history[4][:balance]).to eq 10
-  #     expect(subject.history[6][:balance]).to eq 4
-  #     expect(subject.history[6][:type]).to eq :withdraw
-  #   end
-  # end
 end
