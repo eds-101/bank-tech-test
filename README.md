@@ -18,11 +18,12 @@ Bank Tech Test
 * Work out how to automate processing of bank statement i.e. help classes speak to each other automatically
 * Testing - I'm not sure how I can test just one thing for many tests - tbc
 
-* How to run the program:
+* How to install and run the program:
 ```sh
 $ git clone git@github.com:makersacademy/bank-tech-test.git
-Use your terminal and navigate to root of this project root folder
+Use your terminal, navigate to root of this project root folder and run the following commands
 $ cd lib
+$ bundle
 $ irb
 $ require "./bank.rb"
 $ require "./processor.rb"
