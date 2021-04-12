@@ -1,26 +1,28 @@
 # Processor to prepare bank history for printing
 class StatementPrinter
-  def process(transactions)
-    ordered = order_transactions_by_desc(transactions)
-    format_transactions(ordered, '')
+
+  def process_statement(transactions)
+    transactions_ordered = order_transactions_by_desc(transactions)
+    format_transactions(transactions_ordered)
   end
 
-  def print(file)
-    statement = process(file)
+  def print(statement)
+    # processed_statement = process(statement)
     print_statement_header
     puts statement
   end
 
   private
 
-  def format_transactions(transactions, destination_str)
+  def format_transactions(transactions)
+    output = ''
     transactions.each do |record|
       date = format_date(record[:date])
       amount = format_amount(record[:type], record[:amount])
       balance = format_balance(record[:balance])
-      destination_str << format_record(date, amount, balance)
+      output << format_record(date, amount, balance)
     end
-    destination_str
+    output
   end
 
   def print_statement_header

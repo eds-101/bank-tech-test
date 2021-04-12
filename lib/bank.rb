@@ -7,10 +7,9 @@ require_relative './statement_printer'
 class Bank
   attr_reader :history
 
-  def initialize(printer = StatementPrinter.new)
+  def initialize
     @balance = INITIAL_BALANCE
     @history = []
-    @printer = printer
   end
 
   def deposit(amount)
@@ -29,8 +28,9 @@ class Bank
     @balance
   end
 
-  def print_statement
-    @printer.print(@history)
+  def print_statement(statement_printer = StatementPrinter.new)
+    processed_statement = statement_printer.process_statement(@history)
+    statement_printer.print(processed_statement)
   end
 
   def view_balance
