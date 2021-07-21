@@ -1,15 +1,14 @@
 Bank Tech Test
 =================
 
-## Edeman George
-* My solution uses two classes:
-* A Bank class for completing and storing transactions, and a StatementPrinter to process and print the bank account statements
-* It runs through IRB, with instructions below
-* Test coverage == 100%
+The purpose of this exercise was to write high quality code. It was written using TDD and meets the requirements and accceptance criteria with 100% test coverage.
+
+The program was written in Ruby and tested with Rspec, see below for instructions on how to run both.
+
+![Program in action](./screenshot.png)
 
 
-# Design decisions
-* I used three classes to separate responsibilities, although I reverted to using two because the Statement and Printer classes were still tightly coupled
+# Notes
 * I used a dependency injection for the Bank's print_statement method, in order to preserve flexibility in the code
 * I added guards for the Bank's deposit and withdraw methods in order to make sure input was a number, so the input could be controlled and avoid accidental bugs.
 
@@ -35,7 +34,6 @@ $ rspec
 * How to pass the acceptance criteria:
 ```sh
 Run `rspec` from the command line to see the passing feature test
-See spec/features/acceptance_spec.rb specifically for the acceptance test hardcoded
 ```
 
 ## Specification
