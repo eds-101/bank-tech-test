@@ -14,7 +14,6 @@ The purpose in order to demonstrate high quality code which follows best practic
 - Linter: Rubocop
 
 ![Program in action](./gif_screenshot.gif) 
-Note to Ed: replace text with gif plz
 
 ### Getting started
 ```
