@@ -29,9 +29,8 @@ class Bank
     @balance
   end
 
-  def print_statement(statement_printer = StatementPrinter.new)
-    processed_statement = statement_printer.process_statement(@history)
-    statement_printer.print(processed_statement)
+  def print_statement(printer = StatementPrinter.new, transactions = @history)
+    printer.print(transactions)
   end
 
   def view_balance

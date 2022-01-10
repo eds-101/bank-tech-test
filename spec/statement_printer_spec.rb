@@ -14,13 +14,19 @@ describe StatementPrinter do
   it 'distinguishes between credit and debit' do
     deposit = '40.00 ||'
     withdraw = '|| 5.00'
-    expect(subject.process_statement(@test_data)).to include(deposit)
-    expect(subject.process_statement(@test_data)).to include(withdraw)
+    expect { subject.print(@test_data) }.to output(
+      a_string_including(deposit)
+      ).to_stdout
+    expect { subject.print(@test_data) }.to output(
+      a_string_including(withdraw)
+      ).to_stdout
   end
   it 'prints transactions separated by "||" ' do
     date = Date.new(2012, 1, 14).strftime('%d/%m/%Y')
     deposit_value = "#{date} || 40.00 || || 40.00"
-    expect(subject.process_statement(@test_data)).to include(deposit_value)
+    expect { subject.print(@test_data) }.to output(
+      a_string_including(deposit_value)
+      ).to_stdout
   end
 
 end
