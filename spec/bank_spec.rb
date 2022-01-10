@@ -35,7 +35,7 @@ describe Bank do
   describe '#view_balance' do
     describe 'with transactions completed' do
       before do
-        subject.instance_variable_set(:@history, [
+        subject.instance_variable_set(:@transaction_history, [
                                         { date: Date.new(2012, 1, 1), type: :deposit, amount: 20, balance: 20 },
                                         { date: Date.new(2014, 1, 1), type: :deposit, amount: 10, balance: 25 },
                                         { date: Date.new(2013, 1, 1), type: :withdraw, amount: 5, balance: 15 }

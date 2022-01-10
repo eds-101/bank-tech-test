@@ -6,11 +6,11 @@ require_relative './statement_printer'
 
 # Bank to process and store customer transactions
 class Bank
-  attr_reader :history
+  attr_reader :transaction_history
 
   def initialize
     @balance = INITIAL_BALANCE
-    @history = []
+    @transaction_history = []
   end
 
   def deposit(amount)
@@ -29,14 +29,14 @@ class Bank
     @balance
   end
 
-  def print_statement(printer = StatementPrinter.new, transactions = @history)
+  def print_statement(printer = StatementPrinter.new, transactions = @transaction_history)
     printer.print(transactions)
   end
 
   def view_balance
-    return 0 unless @history.length.positive?
+    return 0 unless @transaction_history.length.positive?
 
-    @history.last[:balance]
+    @transaction_history.last[:balance]
   end
 
   private
@@ -48,6 +48,6 @@ class Bank
   end
 
   def record_transaction(type:, amount:, balance:)
-    @history << { date: Date.today, type: type, amount: amount, balance: balance }
+    @transaction_history << { date: Date.today, type: type, amount: amount, balance: balance }
   end
 end

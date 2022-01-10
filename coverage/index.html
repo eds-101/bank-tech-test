@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-01-10T19:18:57+00:00">2022-01-10T19:18:57+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-01-10T19:27:20+00:00">2022-01-10T19:27:20+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -263,7 +263,7 @@
 
             
 
-            <code class="ruby">  attr_reader :history</code>
+            <code class="ruby">  attr_reader :transaction_history</code>
           </li>
         </div>
       
@@ -307,7 +307,7 @@
 
             
 
-            <code class="ruby">    @history = []</code>
+            <code class="ruby">    @transaction_history = []</code>
           </li>
         </div>
       
@@ -516,7 +516,7 @@
 
             
 
-            <code class="ruby">  def print_statement(printer = StatementPrinter.new, transactions = @history)</code>
+            <code class="ruby">  def print_statement(printer = StatementPrinter.new, transactions = @transaction_history)</code>
           </li>
         </div>
       
@@ -571,7 +571,7 @@
 
             
 
-            <code class="ruby">    return 0 unless @history.length.positive?</code>
+            <code class="ruby">    return 0 unless @transaction_history.length.positive?</code>
           </li>
         </div>
       
@@ -593,7 +593,7 @@
 
             
 
-            <code class="ruby">    @history.last[:balance]</code>
+            <code class="ruby">    @transaction_history.last[:balance]</code>
           </li>
         </div>
       
@@ -725,7 +725,7 @@
 
             
 
-            <code class="ruby">    @history &lt;&lt; { date: Date.today, type: type, amount: amount, balance: balance }</code>
+            <code class="ruby">    @transaction_history &lt;&lt; { date: Date.today, type: type, amount: amount, balance: balance }</code>
           </li>
         </div>
       
@@ -1810,7 +1810,7 @@
 
             
 
-            <code class="ruby">        subject.instance_variable_set(:@history, [</code>
+            <code class="ruby">        subject.instance_variable_set(:@transaction_history, [</code>
           </li>
         </div>
       
