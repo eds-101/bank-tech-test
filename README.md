@@ -8,10 +8,10 @@ Simulation of a banking system (specification below), which runs in the terminal
 The purpose in order to demonstrate high quality code which follows best practice OOP principles (e.g. is SOLID and DRY). The purpose of this exercise was to write high quality code which is developed using a TDD approach. 
 
 ### Technologies used
-
 - Language: Ruby
 - Testing: Rspec
 - Linter: Rubocop
+- Code Coverage: SimpleCov(100% test coverage)
 
 ![Program in action](./gif_screenshot.gif) 
 
@@ -25,10 +25,10 @@ bundle  #install dependencies
 ```
 irb -r "./lib/bank.rb"  #start IRB
 
-bank = Bank.new       #create new instance
-bank.deposit(1000)    #deposit money
-bank.withdraw(50)     #withdraw money
-bank.print_statement  #view bank statement
+bank = Bank.new         #create new Bank instance
+bank.deposit(1000)      #deposit money
+bank.withdraw(50)       #withdraw money
+bank.print_statement    #view bank statement
 ```
 
 ### Running tests
@@ -36,37 +36,17 @@ bank.print_statement  #view bank statement
 rspec
 ```
 
+### My dev notes
+* Dependency injection for the Bank's print_statement method, in order to preserve flexibility in the code
+* Added guards for the Bank's deposit and withdraw methods in order to make sure input was a number, so the input could be controlled and avoid accidental bugs.
 
-
-# Notes
-* I used a dependency injection for the Bank's print_statement method, in order to preserve flexibility in the code
-* I added guards for the Bank's deposit and withdraw methods in order to make sure input was a number, so the input could be controlled and avoid accidental bugs.
-
-* How to install and run the program:
-```sh
-$ git clone git@github.com:makersacademy/bank-tech-test.git
-Use your terminal, navigate to root of this project root folder and run the following commands
-$ cd lib
-$ bundle
-$ irb
-$ require "./bank.rb"
-$ bank = Bank.new
-$ bank.deposit(1000)
-$ bank.withdraw(50)
-$ bank.print_statement
-```
-* How to run tests:
-```sh
-Use your terminal and navigate to root of this project root folder
-$ rspec
-```
 
 * How to pass the acceptance criteria:
 ```sh
 Run `rspec` from the command line to see the passing feature test
 ```
 
-## Specification
+## Specification (from Makers Academy)
 
 ### Requirements
 
