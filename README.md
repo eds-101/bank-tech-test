@@ -1,11 +1,27 @@
 Bank Tech Test
 =================
 
-The purpose of this exercise was to write high quality code. It was written using TDD and meets the requirements and accceptance criteria with 100% test coverage.
+💸💸💸💸💸
 
-The program was written in Ruby and tested with Rspec, see below for instructions on how to run both.
+Simulation of a banking system in order to demonstrate high quality code which follows best practice OOP principles (e.g. is SOLID and DRY).
 
-![Program in action](./screenshot.png)
+The purpose of this exercise was to write high quality code which is developed using a TDD approach. 
+
+### Technologies used
+
+- Language: Ruby
+- Testing: Rspec
+
+![Program in action](./screenshot.png) 
+Note to Ed: replace text with gif plz
+
+## Getting started
+
+## Usage
+
+## Running tests
+
+
 
 
 # Notes
