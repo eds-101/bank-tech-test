@@ -3,24 +3,39 @@ Bank Tech Test
 
 💸💸💸💸💸
 
-Simulation of a banking system in order to demonstrate high quality code which follows best practice OOP principles (e.g. is SOLID and DRY).
+Simulation of a banking system (specification below), which runs in the terminal via IRB (Interactive Ruby Shell in the command line).
 
-The purpose of this exercise was to write high quality code which is developed using a TDD approach. 
+The purpose in order to demonstrate high quality code which follows best practice OOP principles (e.g. is SOLID and DRY). The purpose of this exercise was to write high quality code which is developed using a TDD approach. 
 
 ### Technologies used
 
 - Language: Ruby
 - Testing: Rspec
+- Linter: Rubocop
 
 ![Program in action](./screenshot.png) 
 Note to Ed: replace text with gif plz
 
-## Getting started
+### Getting started
+```
+git clone git@github.com:eds-101/bank-tech-test.git
+cd bank-tech-test
+bundle  #install dependencies
+```
+### Usage
+```
+irb -r "./lib/bank.rb"  #start IRB
 
-## Usage
+bank = Bank.new       #create new instance
+bank.deposit(1000)    #deposit money
+bank.withdraw(50)     #withdraw money
+bank.print_statement  #view bank statement
+```
 
-## Running tests
-
+### Running tests
+```
+rspec
+```
 
 
 
