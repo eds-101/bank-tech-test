@@ -1,7 +1,6 @@
 Bank Tech Test
-=================
-
 💸💸💸💸💸
+=================
 
 Simulation of a banking system (specification below), which runs in the terminal via IRB (Interactive Ruby Shell in the command line).
 
@@ -13,7 +12,7 @@ The purpose in order to demonstrate high quality code which follows best practic
 - Linter: Rubocop
 - Code Coverage: SimpleCov(100% test coverage)
 
-![Program in action](./gif_screenshot.gif) 
+![Program demo](./gif_screenshot.gif) 
 
 ### Getting started
 ```
