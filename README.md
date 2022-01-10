@@ -13,7 +13,7 @@ The purpose in order to demonstrate high quality code which follows best practic
 - Testing: Rspec
 - Linter: Rubocop
 
-![Program in action](./screenshot.png) 
+![Program in action](./gif_screenshot.gif) 
 Note to Ed: replace text with gif plz
 
 ### Getting started
